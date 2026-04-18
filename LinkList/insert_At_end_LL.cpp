@@ -6,7 +6,7 @@ struct Node
     int data;
     struct Node *next;
 };
-void insertEnd(Node *head,int value){
+void insertEnd(Node*& head,int value){
     Node *ptr=head,*prv=NULL;
     while(ptr!=NULL){
         prv=ptr;
