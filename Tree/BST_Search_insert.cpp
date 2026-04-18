@@ -1,13 +1,13 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct TreeNode {
+struct Node {
     int info;
-    TreeNode *left, *right;
+    Node *left, *right;
 };
 
 // FIND procedure
-void FIND(TreeNode* ROOT, int ITEM, TreeNode*& LOC, TreeNode*& PAR) {
+void FIND(Node* ROOT, int ITEM, Node*& LOC, Node*& PAR) {
     if (ROOT == nullptr) {
         LOC = nullptr;
         PAR = nullptr;
@@ -20,8 +20,8 @@ void FIND(TreeNode* ROOT, int ITEM, TreeNode*& LOC, TreeNode*& PAR) {
         return;
     }
 
-    TreeNode* PTR;
-    TreeNode* SAVE;
+    Node* PTR;
+    Node* SAVE;
 
     if (ITEM < ROOT->info) {
         PTR = ROOT->left;
@@ -50,8 +50,8 @@ void FIND(TreeNode* ROOT, int ITEM, TreeNode*& LOC, TreeNode*& PAR) {
 }
 
 // INSBST procedure
-void INSBST(TreeNode*& ROOT, int ITEM) {
-    TreeNode *LOC, *PAR;
+void INSBST(Node*& ROOT, int ITEM) {
+    Node *LOC, *PAR;
 
     // Step 1: Find where to insert
     FIND(ROOT, ITEM, LOC, PAR);
@@ -63,7 +63,7 @@ void INSBST(TreeNode*& ROOT, int ITEM) {
     }
 
     // Step 3: Create a new node
-    TreeNode* NEWNODE = new TreeNode{ITEM, nullptr, nullptr};
+    Node* NEWNODE = new Node{ITEM, nullptr, nullptr};
 
     // Step 4: Attach it
     if (PAR == nullptr) {
@@ -82,7 +82,7 @@ void INSBST(TreeNode*& ROOT, int ITEM) {
 }
 
 // Inorder traversal for checking tree structure
-void inorder(TreeNode* root) {
+void inorder(Node* root) {
     if (!root) return;
     inorder(root->left);
     cout << root->info << " ";
@@ -91,18 +91,18 @@ void inorder(TreeNode* root) {
 
 int main() {
     // Initial sample BST
-    TreeNode* root = new TreeNode{10, nullptr, nullptr};
-    root->left = new TreeNode{5, nullptr, nullptr};
-    root->right = new TreeNode{15, nullptr, nullptr};
-    root->left->left = new TreeNode{3, nullptr, nullptr};
-    root->left->right = new TreeNode{7, nullptr, nullptr};
+    Node* root = new Node{10, nullptr, nullptr};
+    root->left = new Node{5, nullptr, nullptr};
+    root->right = new Node{15, nullptr, nullptr};
+    root->left->left = new Node{3, nullptr, nullptr};
+    root->left->right = new Node{7, nullptr, nullptr};
 
     cout << "Initial tree (inorder): ";
     inorder(root);
     cout << "\n";
 
     // Test FIND
-    TreeNode *loc, *par;
+    Node *loc, *par;
     FIND(root, 7, loc, par);
     if (loc != nullptr) {
         cout << "7 found. Parent = ";
