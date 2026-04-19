@@ -38,8 +38,9 @@ void print2(vector<vector<int>> M, int v)
 
         for (int j = 0; j < v; j++)
         {
+           if(M[i][j]>0)
             cout << "V" << i << " TO " << "V" << j <<" "<< M[i][j] << "\n ";
-            ;
+        
         }
         cout << "\n";
     }
